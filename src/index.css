@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-orange: #FC4F00;
+  --color-brand-orange-hover: #D84200;
+  
+  --color-neutral-ink: #111827; /* Near black (Gray 900) */
+  --color-neutral-muted: #4B5563; /* Medium gray (Gray 600) */
+  --color-neutral-border: #E5E7EB; /* Light gray (Gray 200) for better visibility */
+  --color-neutral-bg: #FFFFFF; /* Pure white */
+  --color-neutral-bg-soft: #F9FAFB; /* Soft light gray (Gray 50) */
+
+  --font-display: "Outfit", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+@keyframes cart-roll {
+  0% { transform: translateX(-280%) scale(1); }
+  22% { transform: translateX(0) scale(1); }
+  26% { transform: translateX(4px) scale(0.96, 1.04); }
+  30% { transform: translateX(0) scale(1); }
+  40% { transform: translateX(0) scale(1.06, 0.82); } /* squish on item impact */
+  46% { transform: translateX(0) scale(0.96, 1.04); } /* stretch rebound */
+  50% { transform: translateX(0) scale(1); }
+  56% { transform: translateX(-15px) scale(0.92, 1.08); } /* recoil wind-up */
+  72% { transform: translateX(280%) scale(1.25, 0.75); }  /* launch complete */
+  100% { transform: translateX(280%) scale(1); }
+}
+
+@keyframes item-fall {
+  0%, 22% { transform: translateY(-24px); opacity: 0; }
+  26% { transform: translateY(-24px); opacity: 1; }
+  38% { transform: translateY(0); opacity: 1; } /* lands in basket */
+  40% { transform: translateY(1.5px); } /* squishes with basket */
+  46% { transform: translateY(-0.5px); }
+  50%, 100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes wheel-roll {
+  0% { transform: rotate(0deg); }
+  22% { transform: rotate(360deg); }
+  26% { transform: rotate(375deg); }
+  30% { transform: rotate(360deg); }
+  56% { transform: rotate(360deg); }
+  58% { transform: rotate(330deg); } /* spins back slightly on recoil */
+  72% { transform: rotate(1440deg); } /* high speed spin on launch */
+  100% { transform: rotate(1440deg); }
+}
+
+@keyframes cta-pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 0 0 rgba(252, 79, 0, 0.4); 
+  }
+  50% { 
+    transform: scale(1.03); 
+    box-shadow: 0 0 0 8px rgba(252, 79, 0, 0); 
+  }
+}
+
+.animate-cart-roll {
+  animation: cart-roll 2s infinite ease-in-out;
+}
+
+.animate-item-fall {
+  animation: item-fall 2s infinite ease-in-out;
+}
+
+.animate-wheel-roll {
+  animation: wheel-roll 2s infinite ease-in-out;
+}
+
+.animate-cta-pulse {
+  animation: cta-pulse 2s infinite ease-in-out;
+}
