@@ -42,7 +42,7 @@ export default function Footer() {
           {/* Brand & Social Column */}
           <div className="flex flex-col text-left">
             <a href="#" className="flex items-center gap-3 mb-5 group">
-              <img src="/logo.svg" alt="Logo Mercado Vip 10" className="h-14 w-auto sm:h-18 invert-0 transition-transform duration-300 group-hover:scale-105" />
+              <img src="/logo.svg" alt="Logo Supermercado Vip 10" className="h-14 w-auto sm:h-18 invert-0 transition-transform duration-300 group-hover:scale-105" />
               <div className="flex flex-col">
                 <span className="font-display text-2xl font-black text-white tracking-tight transition-colors duration-300 group-hover:text-brand-orange leading-none">VIP 10</span>
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-brand-orange leading-none mt-0.5 transition-colors duration-300 group-hover:text-white">Mercado</span>
@@ -134,7 +134,7 @@ export default function Footer() {
 
         {/* Copyrights and Credits */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/45">
-          <p>© {new Date().getFullYear()} Mercado Vip 10. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} Supermercado Vip 10. Todos os direitos reservados.</p>
           <p className="flex items-center gap-1">
             <span>Desenvolvido e Distribuído por</span>
             <a href="https://atlasnextsystems.com" target="_blank" rel="noopener noreferrer" className="font-bold text-white/60 hover:text-brand-orange transition-colors">
