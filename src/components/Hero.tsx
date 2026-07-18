@@ -1,3 +1,5 @@
+import { STORES } from '../data/stores';
+
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-white pt-28 pb-14 sm:pt-36 sm:pb-20 lg:pt-44 lg:pb-28">
@@ -11,10 +13,10 @@ export default function Hero() {
           {/* Text Content Block */}
           <div className="flex flex-col text-center lg:col-span-6 lg:text-left">
             <span className="inline-flex self-center lg:self-start rounded-full bg-brand-orange/10 px-4 py-2 text-xs sm:text-sm font-bold text-brand-orange mb-5 tracking-wider uppercase">
-              Desde 2012 em Salto e Região
+              Desde 2012 em {STORES.map(s => s.city).join(', ')} e Região
             </span>
             <h1 className="font-display text-4xl font-black tracking-tight text-neutral-ink sm:text-6xl lg:text-7xl leading-tight">
-              Incrível supermercado na cidade de <span className="text-brand-orange">Salto</span>
+              Incrível supermercado em <span className="text-brand-orange">{STORES.map(s => s.city).join(' e ')}</span>
             </h1>
             <p className="mt-5 text-lg text-neutral-muted sm:text-xl lg:text-2xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
               Se você busca qualidade, itens frescos e variedade de marcas populares e própria para a sua compra diária ou semanal, o Supermercado Vip é o seu lugar certo.
@@ -23,9 +25,7 @@ export default function Hero() {
             {/* CTA Actions */}
             <div className="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Avenida+Anita+Garibaldi+240,+Salto,+SP"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#localizacao"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-orange px-7 py-3.5 text-base sm:text-lg font-bold text-white shadow-sm transition-all hover:bg-brand-orange-hover hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange animate-cta-pulse"
               >
                 Venha Aqui

@@ -23,6 +23,25 @@ html, body {
   max-width: 100%;
 }
 
+/* Custom Scrollbar - Soft Orange theme */
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F9FAFB;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #FFC5A8; /* Very soft brand orange tint */
+    border-radius: 9999px;
+    border: 2.5px solid #F9FAFB;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FC4F00; /* Full brand orange on hover */
+  }
+}
+
 @keyframes cart-roll {
   0% { transform: translateX(-280%) scale(1); }
   22% { transform: translateX(0) scale(1); }

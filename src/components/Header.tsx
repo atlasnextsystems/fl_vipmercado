@@ -42,49 +42,38 @@ export default function Header() {
 
   const [activeSection, setActiveSection] = useState('');
 
-  // Track scrolling and active section spy
+  // Track scrolling + active section spy via scroll position
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-
-      // If at the top of the page, reset active section
-      if (window.scrollY < 100) {
-        setActiveSection('');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // IntersectionObserver scrollspy
     const sectionIds = ['sobre', 'setores', 'facilidades', 'depoimentos', 'localizacao'];
-    const observerOptions = {
-      root: null,
-      rootMargin: '-30% 0px -55% 0px', // focused focal viewport height
-      threshold: 0
-    };
 
-    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+    const updateState = () => {
+      // Scrolled flag for header shadow
+      setScrolled(window.scrollY > 20);
+
+      // At the very top → no active section
+      if (window.scrollY < 80) {
+        setActiveSection('');
+        return;
+      }
+
+      // Find the last section whose top is at or above the threshold
+      // (i.e., has entered the viewport past the sticky header)
+      const OFFSET = 100; // approx sticky header height + buffer
+      let current = '';
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= OFFSET) {
+          current = id;
         }
-      });
+      }
+      setActiveSection(current);
     };
 
-    const observer = new IntersectionObserver(handleIntersect, observerOptions);
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    window.addEventListener('scroll', updateState, { passive: true });
+    updateState(); // run once on mount
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
-    };
+    return () => window.removeEventListener('scroll', updateState);
   }, []);
 
   // Lock body scroll when mobile menu is open
@@ -110,8 +99,8 @@ export default function Header() {
   return (
     <>
       <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${scrolled
-          ? 'bg-white/85 backdrop-blur-md border-neutral-border/40 shadow-xs'
-          : 'bg-white/10 backdrop-blur-xs border-transparent'
+        ? 'bg-white/85 backdrop-blur-md border-neutral-border/40 shadow-xs'
+        : 'bg-white/10 backdrop-blur-xs border-transparent'
         }`}>
         <div className={`mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300 ${scrolled ? 'py-1.5' : 'py-3'
           }`}>
@@ -124,7 +113,7 @@ export default function Header() {
               className="h-12 w-auto object-contain sm:h-16"
             />
             <div className="flex flex-col">
-              <span className="font-display text-lg font-black tracking-tight text-neutral-ink sm:text-2xl leading-none transition-colors duration-300 group-hover:text-brand-orange">VIP</span>
+              <span className="font-display text-lg font-black tracking-tight text-neutral-ink sm:text-2xl leading-none transition-colors duration-300 group-hover:text-brand-orange">VIP 10</span>
               <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-brand-orange leading-none mt-1 transition-colors duration-300 group-hover:text-neutral-ink">Supermercado</span>
             </div>
           </a>
@@ -137,14 +126,12 @@ export default function Header() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`relative text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-brand-orange rounded-md px-2 py-1.5 group ${
-                    isActive ? 'text-brand-orange' : 'text-neutral-muted hover:text-brand-orange'
-                  }`}
+                  className={`relative text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-brand-orange rounded-md px-2 py-1.5 group ${isActive ? 'text-brand-orange' : 'text-neutral-muted hover:text-brand-orange'
+                    }`}
                 >
                   <span className="relative z-10">{link.name}</span>
-                  <span className={`absolute bottom-0 left-2 right-2 h-[2.5px] bg-brand-orange transition-all duration-300 ease-out ${
-                    isActive ? 'w-[calc(100%-16px)]' : 'w-0 group-hover:w-[calc(100%-16px)]'
-                  }`}></span>
+                  <span className={`absolute bottom-0 left-2 right-2 h-[2.5px] bg-brand-orange transition-all duration-300 ease-out ${isActive ? 'w-[calc(100%-16px)]' : 'w-0 group-hover:w-[calc(100%-16px)]'
+                    }`}></span>
                 </a>
               );
             })}
@@ -266,9 +253,8 @@ export default function Header() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`text-base font-bold transition-colors py-2 border-b border-neutral-border/40 flex items-center justify-between ${
-                      isActive ? 'text-brand-orange border-brand-orange/30' : 'text-neutral-ink hover:text-brand-orange'
-                    }`}
+                    className={`text-base font-bold transition-colors py-2 border-b border-neutral-border/40 flex items-center justify-between ${isActive ? 'text-brand-orange border-brand-orange/30' : 'text-neutral-ink hover:text-brand-orange'
+                      }`}
                   >
                     <span>{link.name}</span>
                     {isActive && (
@@ -327,12 +313,11 @@ export default function Header() {
               aria-label={`Ir para a seção ${link.name}`}
             >
               {/* Dot indicator */}
-              <span className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
-                isActive 
-                  ? 'bg-brand-orange scale-125 shadow-sm shadow-brand-orange/40' 
+              <span className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${isActive
+                  ? 'bg-brand-orange scale-125 shadow-sm shadow-brand-orange/40'
                   : 'bg-neutral-ink/20 group-hover:bg-brand-orange/60 group-hover:scale-110'
-              }`}></span>
-              
+                }`}></span>
+
               {/* Hover Tooltip (Sliding from right to left) */}
               <span className="absolute right-9 top-1/2 -translate-y-1/2 scale-90 opacity-0 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 bg-neutral-ink text-white text-xs font-bold px-3 py-1.5 rounded-lg whitespace-nowrap shadow-md">
                 {link.name}
