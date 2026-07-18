@@ -144,7 +144,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Supermercado Vip 10. Todos os direitos reservados.</p>
           <p className="flex items-center gap-1">
             <span>Desenvolvido e Distribuído por</span>
-            <a href="https://atlasnextsystems.com" target="_blank" rel="noopener noreferrer" className="font-bold text-white/60 hover:text-brand-orange transition-colors">
+            <a href="https://atlasns.vercel.app/" target="_blank" rel="noopener noreferrer" className="font-bold text-white/60 hover:text-brand-orange transition-colors">
               Atlas
             </a>
           </p>
