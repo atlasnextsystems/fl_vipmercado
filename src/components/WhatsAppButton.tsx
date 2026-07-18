@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { WHATSAPP_GROUP_URL } from '../data/links';
 
 export default function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -88,7 +89,7 @@ export default function WhatsAppButton() {
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/5511971672012?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20a%20disponibilidade%20de%20um%20produto."
+        href={WHATSAPP_GROUP_URL}
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleButtonClick}

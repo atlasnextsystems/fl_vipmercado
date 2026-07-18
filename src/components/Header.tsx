@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { WHATSAPP_GROUP_URL } from '../data/links';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -156,7 +157,7 @@ export default function Header() {
 
             {/* Contact CTA */}
             <a
-              href="https://wa.me/5511971672012"
+              href={WHATSAPP_GROUP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-orange px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-brand-orange-hover hover:scale-[1.02] hover:shadow-md hover:shadow-brand-orange/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange active:scale-95 animate-cta-pulse"
@@ -283,7 +284,7 @@ export default function Header() {
 
                 {/* WhatsApp CTA with Pulse */}
                 <a
-                  href="https://wa.me/5511971672012"
+                  href={WHATSAPP_GROUP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
