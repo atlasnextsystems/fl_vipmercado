@@ -45,7 +45,7 @@ export default function Header() {
 
   // Track scrolling + active section spy via scroll position
   useEffect(() => {
-    const sectionIds = ['sobre', 'setores', 'facilidades', 'depoimentos', 'localizacao'];
+    const sectionIds = ['sobre', 'videos', 'setores', 'facilidades', 'depoimentos', 'localizacao'];
 
     const updateState = () => {
       // Scrolled flag for header shadow
@@ -91,6 +91,7 @@ export default function Header() {
 
   const navLinks = [
     { name: 'Sobre', href: '#sobre' },
+    { name: 'Vídeos', href: '#videos' },
     { name: 'Setores', href: '#setores' },
     { name: 'Facilidades', href: '#facilidades' },
     { name: 'Depoimentos', href: '#depoimentos' },
