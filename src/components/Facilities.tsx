@@ -18,24 +18,7 @@ export default function Facilities() {
       title: 'Vale-Alimentação',
       desc: 'Faça suas compras mensais ou semanais usando Sodexo, VR Alimentação, Ticket Alimentação, Alelo e outros.'
     },
-    {
-      icon: (
-        <svg className="h-6 w-6 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-        </svg>
-      ),
-      title: 'Estacionamento Próprio',
-      desc: 'Vagas exclusivas e de fácil acesso para que você possa estacionar com tranquilidade e carregar suas compras com conforto.'
-    },
-    {
-      icon: (
-        <svg className="h-6 w-6 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      ),
-      title: 'Ambiente Climatizado',
-      desc: 'Loja limpa, carrinhos constantemente higienizados e temperatura agradável para você fazer compras no seu tempo.'
-    }
+
   ];
 
   return (
